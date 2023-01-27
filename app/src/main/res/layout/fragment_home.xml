@@ -22,13 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/garamond"
+        android:textColor="@color/primary"
         android:text="Welcome to your one stop home control" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        tools:listitem="@layout/item_grid" />
-
 
 </LinearLayout>
