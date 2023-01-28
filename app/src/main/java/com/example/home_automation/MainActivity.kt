@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().replace(R.id.frame, HomeFragment()).commit()
 
-        add_btn.setOnClickListener {
 
-        }
+
     }
 }

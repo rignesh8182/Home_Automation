@@ -10,15 +10,14 @@
 
     <LinearLayout
         android:layout_width="178dp"
-        android:layout_height="195dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-
-            android:src="@drawable/fan" />
+            android:src="@drawable/light" />
 
         <Switch
             android:layout_width="wrap_content"

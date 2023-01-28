@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class item_adpter : RecyclerView.Adapter<item_adpter.viewHolder>() {
+class item_adpter(var item_list:ArrayList<itemModel>) : RecyclerView.Adapter<item_adpter.viewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -20,7 +20,7 @@ class item_adpter : RecyclerView.Adapter<item_adpter.viewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return item_list.size
     }
 
     class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
