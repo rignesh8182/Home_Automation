@@ -25,4 +25,9 @@
         android:textColor="@color/primary"
         android:text="Welcome to your one stop home control" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_sh"/>
+
 </LinearLayout>
