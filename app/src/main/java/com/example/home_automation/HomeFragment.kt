@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.firebase.database.DataSnapshot
@@ -39,7 +40,7 @@ class HomeFragment : Fragment() {
                         item_list = snapshot.children.map { ss ->
                             ss.getValue(itemModel::class.java)!!
                         } as ArrayList<itemModel>
-                        recycle.layoutManager=StaggeredGridLayoutManager(2,LinearLayout.VERTICAL)
+                        recycle.layoutManager=LinearLayoutManager(activity)
                         recycle.adapter=item_adpter(item_list)
                     } catch (e: Exception) {
                         e.printStackTrace()
