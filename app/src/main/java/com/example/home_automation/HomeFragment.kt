@@ -18,40 +18,14 @@ import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
-    lateinit var item_list: ArrayList<itemModel>
-    lateinit var recycle: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootview= inflater.inflate(R.layout.fragment_home, container, false)
-        item_list = ArrayList()
-        recycle=rootview.findViewById(R.id.item_sh)
-
-        val db = Firebase.database
-        val myref = db.getReference("hello")
-
-        myref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot != null) {
-                    try {
-                        item_list = snapshot.children.map { ss ->
-                            ss.getValue(itemModel::class.java)!!
-                        } as ArrayList<itemModel>
-                        recycle.layoutManager=LinearLayoutManager(activity)
-                        recycle.adapter=item_adpter(item_list)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
+        var rootview = inflater.inflate(R.layout.fragment_home, container, false)
         return rootview
     }
 }
