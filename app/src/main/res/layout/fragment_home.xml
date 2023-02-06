@@ -12,17 +12,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/garamond"
+        android:fontFamily="@font/poppins"
         android:text="Hello,User"
-        android:textColor="@color/primary"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/garamond"
-        android:textColor="@color/primary"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/white"
         android:text="Welcome to your one stop home control" />
 
     <androidx.recyclerview.widget.RecyclerView
