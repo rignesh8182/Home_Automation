@@ -27,10 +27,18 @@ class MainActivity : AppCompatActivity() {
         add_btn = findViewById(R.id.add)
 
         bt_menu.background = null
-
         supportFragmentManager.beginTransaction().replace(R.id.frame, HomeFragment()).commit()
 
-
-
+        bt_menu.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_home -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.frame, HomeFragment()).commit()
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
     }
 }
