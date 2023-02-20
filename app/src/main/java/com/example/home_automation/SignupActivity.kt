@@ -6,19 +6,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 
-class LoginActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity() {
 
-    lateinit var signup:TextView
+    lateinit var login: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_signup)
 
-        signup=findViewById(R.id.signup);
+        login=findViewById(R.id.login);
 
-        signup.setOnClickListener {
-            startActivity(Intent(applicationContext,SignupActivity::class.java))
+        login.setOnClickListener {
+            startActivity(Intent(applicationContext,LoginActivity::class.java))
         }
     }
 }
