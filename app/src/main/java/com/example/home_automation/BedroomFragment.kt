@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -18,7 +19,7 @@ import com.google.firebase.database.ValueEventListener
 
 class BedroomFragment : Fragment() {
 
-    lateinit var items:RecyclerView
+    lateinit var items:ViewPager2
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,8 +41,11 @@ class BedroomFragment : Fragment() {
                 }
 
                 items=rootView.findViewById(R.id.items)
-                items.layoutManager=StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
                 items.adapter=item_adpter(item_list,activity)
+                items.offscreenPageLimit=3
+                items.clipToPadding=false
+                items.clipChildren=false
+                items.getChildAt(0).overScrollMode=RecyclerView.OVER_SCROLL_NEVER
             }
 
             override fun onCancelled(error: DatabaseError) {}

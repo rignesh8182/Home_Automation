@@ -42,14 +42,13 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
 
         })
         if (item_list.get(position).state == true) {
-            holder.item_switch.setImageResource(R.drawable.ic_switch_on)
+            holder.item_switch.setImageResource(R.drawable.on_switch)
         } else {
-            holder.item_switch.setImageResource(R.drawable.ic_switch_off)
+            holder.item_switch.setImageResource(R.drawable.off_switch)
         }
 
         holder.item_switch.setOnClickListener {
             if (item_list.get(position).state == true){
-                holder.item_switch.setImageResource(R.drawable.ic_switch_off)
                 var db: FirebaseDatabase = FirebaseDatabase.getInstance()
                 db.getReference("Hello").get().addOnCompleteListener(OnCompleteListener {
                     var snapshot: DataSnapshot = it.getResult()
@@ -69,7 +68,6 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
                     }
                 })
             }else{
-                holder.item_switch.setImageResource(R.drawable.ic_switch_on)
                 var db: FirebaseDatabase = FirebaseDatabase.getInstance()
                 db.getReference("Hello").get().addOnCompleteListener(OnCompleteListener {
                     var snapshot: DataSnapshot = it.getResult()
