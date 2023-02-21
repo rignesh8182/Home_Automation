@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary_bg"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="20dp"
     tools:context=".BedroomFragment">
 
     <TextView
@@ -20,7 +20,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:id="@+id/items"/>
 
 </LinearLayout>
