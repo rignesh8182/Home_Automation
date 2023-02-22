@@ -1,6 +1,5 @@
-package com.example.home_automation
+package com.example.home_automation.Adpter
 
-import android.app.ProgressDialog
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.home_automation.Models.itemModel
+import com.example.home_automation.R
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -59,6 +60,7 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
                             key = ss.key!!
                             if (!key.isEmpty()) {
                                 db.getReference("Hello").child(key).child("state").setValue(false)
+                                db.getReference("Hello").child(key).child("time").setValue(System.currentTimeMillis())
                                 item_list.get(position).state=false
                                 item_list.set(position,item_list.get(position));
                                 notifyItemChanged(position)
@@ -78,6 +80,7 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
                             key = ss.key!!
                             if (!key.isEmpty()) {
                                 db.getReference("Hello").child(key).child("state").setValue(true)
+                                db.getReference("Hello").child(key).child("time").setValue(System.currentTimeMillis())
                                 item_list.get(position).state=true
                                 item_list.set(position,item_list.get(position));
                                 notifyItemChanged(position)

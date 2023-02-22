@@ -7,7 +7,7 @@
     android:background="@color/primary_bg"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".BedroomFragment">
+    tools:context=".Fragments.BedroomFragment">
 
     <TextView
         android:layout_width="wrap_content"

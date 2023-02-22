@@ -1,4 +1,4 @@
-package com.example.home_automation
+package com.example.home_automation.Fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,18 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.example.home_automation.R
 
 class HomeFragment : Fragment() {
 
@@ -33,7 +23,7 @@ class HomeFragment : Fragment() {
 
         bed=rootview.findViewById(R.id.hm_bed)
         bed.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame,BedroomFragment()).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.frame, BedroomFragment()).commit()
         }
 
         return rootview
