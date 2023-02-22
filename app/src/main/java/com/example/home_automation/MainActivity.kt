@@ -35,6 +35,10 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(R.id.frame, HomeFragment()).commit()
                     true
                 }
+                R.id.notification->{
+                    supportFragmentManager.beginTransaction().replace(R.id.frame, NotificationFragment()).commit()
+                    true
+                }
                 else -> {
                     false
                 }
