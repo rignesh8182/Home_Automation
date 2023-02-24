@@ -32,8 +32,9 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         holder.item_name.text = item_list.get(position).name
-        var storeimg = FirebaseStorage.getInstance().reference.child(item_list.get(position).img + ".png")
-        Log.d("temp",storeimg.toString())
+        var storeimg =
+            FirebaseStorage.getInstance().reference.child(item_list.get(position).img + ".png")
+        Log.d("temp", storeimg.toString())
         var tempfile = File.createTempFile("temp", "png")
         storeimg.getFile(tempfile).addOnSuccessListener(OnSuccessListener {
             var bitmap = BitmapFactory.decodeFile(tempfile.absolutePath)
@@ -49,27 +50,28 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
         }
 
         holder.item_switch.setOnClickListener {
-            if (item_list.get(position).state == true){
+            if (item_list.get(position).state == true) {
                 var db: FirebaseDatabase = FirebaseDatabase.getInstance()
                 db.getReference("Hello").get().addOnCompleteListener(OnCompleteListener {
                     var snapshot: DataSnapshot = it.getResult()
                     var key: String = ""
                     for (ss: DataSnapshot in snapshot.children) {
-                        val contactModel= ss.getValue(itemModel::class.java)
+                        val contactModel = ss.getValue(itemModel::class.java)
                         if (contactModel!!.name == item_list.get(position).name) {
                             key = ss.key!!
                             if (!key.isEmpty()) {
                                 db.getReference("Hello").child(key).child("state").setValue(false)
-                                db.getReference("Hello").child(key).child("time").setValue(System.currentTimeMillis())
-                                item_list.get(position).state=false
-                                item_list.set(position,item_list.get(position));
+                                db.getReference("Hello").child(key).child("time")
+                                    .setValue(System.currentTimeMillis())
+                                item_list.get(position).state = false
+                                item_list.set(position, item_list.get(position));
                                 notifyItemChanged(position)
                             }
                             break
                         }
                     }
                 })
-            }else{
+            } else {
                 var db: FirebaseDatabase = FirebaseDatabase.getInstance()
                 db.getReference("Hello").get().addOnCompleteListener(OnCompleteListener {
                     var snapshot: DataSnapshot = it.getResult()
@@ -80,9 +82,10 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
                             key = ss.key!!
                             if (!key.isEmpty()) {
                                 db.getReference("Hello").child(key).child("state").setValue(true)
-                                db.getReference("Hello").child(key).child("time").setValue(System.currentTimeMillis())
-                                item_list.get(position).state=true
-                                item_list.set(position,item_list.get(position));
+                                db.getReference("Hello").child(key).child("time")
+                                    .setValue(System.currentTimeMillis())
+                                item_list.get(position).state = true
+                                item_list.set(position, item_list.get(position));
                                 notifyItemChanged(position)
                             }
                             break

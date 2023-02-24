@@ -1,12 +1,22 @@
 package com.example.home_automation.Adpter
 
+import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.home_automation.Models.Notification_model
 import com.example.home_automation.R
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
+import java.text.SimpleDateFormat
 
-class NotificationAdpter : RecyclerView.Adapter<NotificationAdpter.viewHolder>() {
+class NotificationAdpter(var notify_list:ArrayList<Notification_model>) : RecyclerView.Adapter<NotificationAdpter.viewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         var v=LayoutInflater.from(parent.context).inflate(R.layout.notification_item,parent,false)
@@ -14,15 +24,35 @@ class NotificationAdpter : RecyclerView.Adapter<NotificationAdpter.viewHolder>()
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        TODO("Not yet implemented")
+        var storeimg =
+            FirebaseStorage.getInstance().reference.child(notify_list.get(position).img + ".png")
+        Log.d("temp", storeimg.toString())
+        var tempfile = File.createTempFile("temp", "png")
+        storeimg.getFile(tempfile).addOnSuccessListener(OnSuccessListener {
+            var bitmap = BitmapFactory.decodeFile(tempfile.absolutePath)
+            holder.img.setImageBitmap(bitmap)
+
+        }).addOnFailureListener(OnFailureListener {
+
+        })
+
+        var formatter=SimpleDateFormat("hh:mm / dd-MM-yy")
+        holder.time.text=formatter.format(notify_list.get(position).time)
+        if (notify_list.get(position).state == true){
+            holder.msg.text="Bedroom’s Light turned on"
+        }else{
+            holder.msg.text="Bedroom’s Light turned off"
+        }
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return  notify_list.size
     }
 
     class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        var img:ImageView=itemView.findViewById(R.id.notify_img)
+        var msg:TextView=itemView.findViewById(R.id.notify_msg)
+        var time:TextView=itemView.findViewById(R.id.notify_time)
     }
 
 }
