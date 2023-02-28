@@ -16,13 +16,12 @@
 
         <ImageView
             android:id="@+id/notify_img"
-            android:layout_width="60dp"
-            android:layout_height="80dp"
-            android:src="@drawable/light" />
+            android:layout_width="50dp"
+            android:layout_height="70dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="right"
             android:orientation="vertical">
 
@@ -32,17 +31,18 @@
                 android:layout_height="wrap_content"
                 android:text="11:42 / 21-2-23"
                 android:layout_marginRight="10dp"
-                android:textSize="10dp"
+                android:textSize="8dp"
                 android:textColor="#aaaaaa" />
 
             <TextView
                 android:id="@+id/notify_msg"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Bedroom’s Light turned on"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
                 android:textSize="16dp"
+                android:gravity="center"
                 android:textColor="#5B8FB9" />
 
         </LinearLayout>

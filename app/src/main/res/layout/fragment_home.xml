@@ -42,7 +42,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/sun_cloud" />
@@ -140,8 +140,8 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:src="@drawable/bedroom" />
 
                 </androidx.cardview.widget.CardView>
@@ -150,6 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bedroom"
+                    android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -167,8 +168,8 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:src="@drawable/kitchen" />
 
                 </androidx.cardview.widget.CardView>
@@ -177,6 +178,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kitchen"
+                    android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -194,8 +196,8 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:src="@drawable/living" />
 
                 </androidx.cardview.widget.CardView>
@@ -204,6 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Livingroom"
+                    android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -221,8 +224,8 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:src="@drawable/bathroom" />
 
                 </androidx.cardview.widget.CardView>
@@ -231,6 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bathroom"
+                    android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -258,8 +262,8 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:src="@drawable/balcony" />
 
                 </androidx.cardview.widget.CardView>
@@ -268,6 +272,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Balcony"
+                    android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -285,8 +290,8 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:src="@drawable/car" />
 
                 </androidx.cardview.widget.CardView>
@@ -295,6 +300,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Parking"
+                    android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -312,8 +318,8 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:src="@drawable/studyroom" />
 
                 </androidx.cardview.widget.CardView>
@@ -322,6 +328,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Studyroom"
+                    android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -339,8 +346,8 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
                         android:src="@drawable/office" />
 
                 </androidx.cardview.widget.CardView>
@@ -349,6 +356,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Office"
+                    android:textSize="12dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/white" />
             </LinearLayout>

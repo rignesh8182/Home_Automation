@@ -1,5 +1,6 @@
 package com.example.home_automation.Adpter
 
+import android.app.ProgressDialog
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.home_automation.DBHelper
 import com.example.home_automation.Models.itemModel
 import com.example.home_automation.R
 import com.google.android.gms.tasks.OnCompleteListener
@@ -20,9 +23,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
-class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActivity?) :
-    RecyclerView.Adapter<item_adpter.viewHolder>() {
+class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActivity?) : RecyclerView.Adapter<item_adpter.viewHolder>() {
 
+    val dbhelper=DBHelper(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         var view: View =
@@ -36,10 +39,16 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
             FirebaseStorage.getInstance().reference.child(item_list.get(position).img + ".png")
         Log.d("temp", storeimg.toString())
         var tempfile = File.createTempFile("temp", "png")
+        var progressDialog= ProgressDialog(context)
+        progressDialog.setMessage("Fetching Images")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
         storeimg.getFile(tempfile).addOnSuccessListener(OnSuccessListener {
             var bitmap = BitmapFactory.decodeFile(tempfile.absolutePath)
             holder.item_img.setImageBitmap(bitmap)
-
+            if (progressDialog.isShowing){
+                progressDialog.dismiss()
+            }
         }).addOnFailureListener(OnFailureListener {
 
         })
@@ -65,12 +74,18 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
                                     .setValue(System.currentTimeMillis())
                                 item_list.get(position).state = false
                                 item_list.set(position, item_list.get(position));
-                                notifyItemChanged(position)
+                                var res:Boolean=dbhelper.insert_data(item_list.get(position).name,false,item_list.get(position).img,System.currentTimeMillis())
+                                if (res){
+                                    Toast.makeText(context, "Data inserted", Toast.LENGTH_SHORT).show()
+                                }else{
+                                    Toast.makeText(context, "Error in insertion", Toast.LENGTH_SHORT).show()
+                                }
                             }
                             break
                         }
                     }
                 })
+
             } else {
                 var db: FirebaseDatabase = FirebaseDatabase.getInstance()
                 db.getReference("Hello").get().addOnCompleteListener(OnCompleteListener {
@@ -86,7 +101,12 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
                                     .setValue(System.currentTimeMillis())
                                 item_list.get(position).state = true
                                 item_list.set(position, item_list.get(position));
-                                notifyItemChanged(position)
+                                var res:Boolean=dbhelper.insert_data(item_list.get(position).name,true,item_list.get(position).img,System.currentTimeMillis())
+                                if (res){
+                                    Toast.makeText(context, "Data inserted", Toast.LENGTH_SHORT).show()
+                                }else{
+                                    Toast.makeText(context, "Error in insertion", Toast.LENGTH_SHORT).show()
+                                }
                             }
                             break
                         }
