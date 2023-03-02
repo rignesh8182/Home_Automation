@@ -41,6 +41,7 @@ class BedroomFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var item_list:ArrayList<itemModel> = ArrayList()
                 for (ss in snapshot.children) {
+                    
                     item_list.add(ss.getValue(itemModel::class.java)!!)
                 }
 

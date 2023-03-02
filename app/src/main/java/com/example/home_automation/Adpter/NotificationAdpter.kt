@@ -1,10 +1,12 @@
 package com.example.home_automation.Adpter
 
 import android.graphics.BitmapFactory
+import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -39,9 +41,14 @@ class NotificationAdpter(var notify_list:ArrayList<Notification_model>) : Recycl
         var formatter=SimpleDateFormat("hh:mm / dd-MM-yy")
         holder.time.text=formatter.format(notify_list.get(position).time)
         if (notify_list.get(position).state == true){
-            holder.msg.text="Bedroom’s Light turned on"
+            holder.msg.text="Bedroom’s ${notify_list.get(position).name} turned on"
         }else{
-            holder.msg.text="Bedroom’s Light turned off"
+            holder.msg.text="Bedroom’s ${notify_list.get(position).name} turned off"
+        }
+
+        holder.itemView.setOnLongClickListener {
+            holder.check.visibility=View.VISIBLE
+            true
         }
     }
 
@@ -53,6 +60,9 @@ class NotificationAdpter(var notify_list:ArrayList<Notification_model>) : Recycl
         var img:ImageView=itemView.findViewById(R.id.notify_img)
         var msg:TextView=itemView.findViewById(R.id.notify_msg)
         var time:TextView=itemView.findViewById(R.id.notify_time)
+        var check:CheckBox=itemView.findViewById(R.id.check_item)
+
+
     }
 
 }

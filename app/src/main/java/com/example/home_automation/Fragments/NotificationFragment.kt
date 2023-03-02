@@ -51,7 +51,8 @@ class NotificationFragment : Fragment() {
 //            override fun onCancelled(error: DatabaseError) {}
 //        })
         var data:Cursor=dbHelper.getAll()
-        while (data.moveToNext()){
+        data.moveToLast()
+        while (data.moveToPrevious()){
             item_list.add(Notification_model(data.getString(1),data.getString(3), data.getInt(2) == 1,data.getLong(4)))
         }
         notify_list.layoutManager= LinearLayoutManager(activity)
