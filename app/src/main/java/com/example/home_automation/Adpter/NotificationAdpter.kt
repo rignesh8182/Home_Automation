@@ -71,8 +71,6 @@ class NotificationAdpter(var notify_list: ArrayList<Notification_model>,var cont
         var img: ImageView = itemView.findViewById(R.id.notify_img)
         var msg: TextView = itemView.findViewById(R.id.notify_msg)
         var time: TextView = itemView.findViewById(R.id.notify_time)
-        var check: CheckBox = itemView.findViewById(R.id.check_item)
-
 
     }
 

@@ -44,4 +44,9 @@ class DBHelper(context: Context?) :
         val db=writableDatabase
         return db.delete(table_name,"item_id = ?", arrayOf(item_id.toString()))
     }
+
+    fun del_all() {
+        val db=writableDatabase
+        return db.execSQL("delete from $table_name")
+    }
 }

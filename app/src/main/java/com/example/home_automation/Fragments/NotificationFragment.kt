@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.LEFT
@@ -26,6 +27,7 @@ class NotificationFragment() : Fragment() {
 
     lateinit var notify_list:RecyclerView
     lateinit var dbHelper: DBHelper
+    lateinit var del_all:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,7 @@ class NotificationFragment() : Fragment() {
 
         notify_list=rootView.findViewById(R.id.notify)
         dbHelper= DBHelper(context)
+        del_all=rootView.findViewById(R.id.del_all)
         var item_list:ArrayList<Notification_model> = ArrayList()
 
 //        var db= FirebaseDatabase.getInstance().getReference("Hello")
@@ -88,6 +91,12 @@ class NotificationFragment() : Fragment() {
         }
         val itemTouchHelper= ItemTouchHelper(itemTouchHelperc)
         itemTouchHelper.attachToRecyclerView(notify_list)
+
+        del_all.setOnClickListener {
+            var res=dbHelper.del_all()
+            item_list.clear()
+            notify_list.adapter=NotificationAdpter(item_list,requireActivity())
+        }
 
         return rootView
     }
