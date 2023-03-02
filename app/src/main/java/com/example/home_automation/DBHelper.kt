@@ -39,4 +39,9 @@ class DBHelper(context: Context?) :
         var res:Cursor=db.rawQuery("select * from $table_name",null)
         return res
     }
+
+    fun del_item(item_id:Int): Int {
+        val db=writableDatabase
+        return db.delete(table_name,"item_id = ?", arrayOf(item_id.toString()))
+    }
 }

@@ -3,19 +3,26 @@ package com.example.home_automation.Fragments
 import android.annotation.SuppressLint
 import android.database.Cursor
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.LEFT
+import androidx.recyclerview.widget.ItemTouchHelper.RIGHT
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.home_automation.Adpter.NotificationAdpter
 import com.example.home_automation.DBHelper
 import com.example.home_automation.Models.Notification_model
 import com.example.home_automation.R
 
 
-class NotificationFragment : Fragment() {
+class NotificationFragment() : Fragment() {
 
     lateinit var notify_list:RecyclerView
     lateinit var dbHelper: DBHelper
@@ -53,12 +60,35 @@ class NotificationFragment : Fragment() {
         var data:Cursor=dbHelper.getAll()
         data.moveToLast()
         while (data.moveToPrevious()){
-            item_list.add(Notification_model(data.getString(1),data.getString(3), data.getInt(2) == 1,data.getLong(4)))
+            item_list.add(Notification_model(data.getInt(0),data.getString(1),data.getString(3), data.getInt(2) == 1,data.getLong(4)))
         }
         notify_list.layoutManager= LinearLayoutManager(activity)
-        notify_list.adapter= NotificationAdpter(item_list)
+        notify_list.adapter= NotificationAdpter(item_list, requireActivity())
+
+        val itemTouchHelperc = object : ItemTouchHelper.SimpleCallback(0, LEFT or RIGHT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            )=true
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val pos=viewHolder.adapterPosition
+                var id=item_list.get(pos).id
+                val db=DBHelper(context)
+                var res=db.del_item(id!!)
+                item_list.removeAt(pos)
+                notify_list.adapter=NotificationAdpter(item_list, requireActivity())
+                if (res==1){
+                    Toast.makeText(context,"Deleted",Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        val itemTouchHelper= ItemTouchHelper(itemTouchHelperc)
+        itemTouchHelper.attachToRecyclerView(notify_list)
 
         return rootView
     }
-
 }

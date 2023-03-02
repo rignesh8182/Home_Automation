@@ -1,27 +1,37 @@
 package com.example.home_automation.Adpter
 
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
 import android.graphics.BitmapFactory
 import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import androidx.recyclerview.widget.ItemTouchHelper.LEFT
+import androidx.recyclerview.widget.ItemTouchHelper.RIGHT
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.home_automation.DBHelper
 import com.example.home_automation.Models.Notification_model
 import com.example.home_automation.R
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+import java.sql.SQLClientInfoException
 import java.text.SimpleDateFormat
 
-class NotificationAdpter(var notify_list:ArrayList<Notification_model>) : RecyclerView.Adapter<NotificationAdpter.viewHolder>() {
+class NotificationAdpter(var notify_list: ArrayList<Notification_model>,var context:Context) :
+    RecyclerView.Adapter<NotificationAdpter.viewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        var v=LayoutInflater.from(parent.context).inflate(R.layout.notification_item,parent,false)
+        var v =
+            LayoutInflater.from(parent.context).inflate(R.layout.notification_item, parent, false)
         return viewHolder(v)
     }
 
@@ -38,29 +48,30 @@ class NotificationAdpter(var notify_list:ArrayList<Notification_model>) : Recycl
 
         })
 
-        var formatter=SimpleDateFormat("hh:mm / dd-MM-yy")
-        holder.time.text=formatter.format(notify_list.get(position).time)
-        if (notify_list.get(position).state == true){
-            holder.msg.text="Bedroom’s ${notify_list.get(position).name} turned on"
-        }else{
-            holder.msg.text="Bedroom’s ${notify_list.get(position).name} turned off"
+        var formatter = SimpleDateFormat("hh:mm / dd-MM-yy")
+        holder.time.text = formatter.format(notify_list.get(position).time)
+        if (notify_list.get(position).state == true) {
+            holder.msg.text = "Bedroom’s ${notify_list.get(position).name} turned on"
+        } else {
+            holder.msg.text = "Bedroom’s ${notify_list.get(position).name} turned off"
         }
 
-        holder.itemView.setOnLongClickListener {
-            holder.check.visibility=View.VISIBLE
-            true
-        }
+//        holder.itemView.setOnLongClickListener {
+//            holder.check.visibility = View.VISIBLE
+//            true
+//        }
+
     }
 
     override fun getItemCount(): Int {
-        return  notify_list.size
+        return notify_list.size
     }
 
     class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var img:ImageView=itemView.findViewById(R.id.notify_img)
-        var msg:TextView=itemView.findViewById(R.id.notify_msg)
-        var time:TextView=itemView.findViewById(R.id.notify_time)
-        var check:CheckBox=itemView.findViewById(R.id.check_item)
+        var img: ImageView = itemView.findViewById(R.id.notify_img)
+        var msg: TextView = itemView.findViewById(R.id.notify_msg)
+        var time: TextView = itemView.findViewById(R.id.notify_time)
+        var check: CheckBox = itemView.findViewById(R.id.check_item)
 
 
     }
