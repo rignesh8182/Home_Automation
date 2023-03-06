@@ -53,32 +53,32 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/home_tem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/poppins"
                     android:includeFontPadding="false"
                     android:lineSpacingExtra="0dp"
-                    android:text="23°c"
                     android:textColor="@color/white"
-                    android:textSize="40dp"
+                    android:textSize="35dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/weth_condi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Foggy"
                     android:textColor="@color/white"
                     android:textSize="17dp" />
 
                 <TextView
+                    android:id="@+id/loc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Rajkot,Gujarat"
                     android:textColor="@color/white" />
 
             </LinearLayout>

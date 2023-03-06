@@ -96,6 +96,7 @@ class NotificationFragment() : Fragment() {
             var res=dbHelper.del_all()
             item_list.clear()
             notify_list.adapter=NotificationAdpter(item_list,requireActivity())
+            Toast.makeText(context,"All notification history deleted",Toast.LENGTH_SHORT).show()
         }
 
         return rootView
