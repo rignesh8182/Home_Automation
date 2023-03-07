@@ -70,8 +70,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/poppins"
+                    android:text="Loading..."
                     android:textColor="@color/white"
-                    android:textSize="17dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/loc"

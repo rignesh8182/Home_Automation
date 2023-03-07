@@ -1,6 +1,8 @@
 package com.example.home_automation.Fragments
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.database.Cursor
 import android.os.Bundle
 import android.util.Log
@@ -25,9 +27,9 @@ import com.example.home_automation.R
 
 class NotificationFragment() : Fragment() {
 
-    lateinit var notify_list:RecyclerView
+    lateinit var notify_list: RecyclerView
     lateinit var dbHelper: DBHelper
-    lateinit var del_all:TextView
+    lateinit var del_all: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +42,15 @@ class NotificationFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView=inflater.inflate(R.layout.fragment_notification, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_notification, container, false)
 
-        notify_list=rootView.findViewById(R.id.notify)
-        dbHelper= DBHelper(context)
-        del_all=rootView.findViewById(R.id.del_all)
-        var item_list:ArrayList<Notification_model> = ArrayList()
+        notify_list = rootView.findViewById(R.id.notify)
+        dbHelper = DBHelper(context)
+        del_all = rootView.findViewById(R.id.del_all)
+        var item_list: ArrayList<Notification_model> = ArrayList()
+
+
+        val builder = AlertDialog.Builder(activity)
 
 //        var db= FirebaseDatabase.getInstance().getReference("Hello")
 //        db.addValueEventListener(object : ValueEventListener {
@@ -60,43 +65,70 @@ class NotificationFragment() : Fragment() {
 //
 //            override fun onCancelled(error: DatabaseError) {}
 //        })
-        var data:Cursor=dbHelper.getAll()
+        var data: Cursor = dbHelper.getAll()
         data.moveToLast()
-        while (data.moveToPrevious()){
-            item_list.add(Notification_model(data.getInt(0),data.getString(1),data.getString(3), data.getInt(2) == 1,data.getLong(4)))
+        item_list.add(
+            Notification_model(
+                data.getInt(0),
+                data.getString(1),
+                data.getString(3),
+                data.getInt(2) == 1,
+                data.getLong(4)
+            )
+        )
+        while (data.moveToPrevious()) {
+            item_list.add(
+                Notification_model(
+                    data.getInt(0),
+                    data.getString(1),
+                    data.getString(3),
+                    data.getInt(2) == 1,
+                    data.getLong(4)
+                )
+            )
         }
-        notify_list.layoutManager= LinearLayoutManager(activity)
-        notify_list.adapter= NotificationAdpter(item_list, requireActivity())
+        notify_list.layoutManager = LinearLayoutManager(activity)
+        notify_list.adapter = NotificationAdpter(item_list, requireActivity())
 
-        val itemTouchHelperc = object : ItemTouchHelper.SimpleCallback(0, LEFT or RIGHT){
+        val itemTouchHelperc = object : ItemTouchHelper.SimpleCallback(0, LEFT or RIGHT) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
-            )=true
+            ) = true
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val pos=viewHolder.adapterPosition
-                var id=item_list.get(pos).id
-                val db=DBHelper(context)
-                var res=db.del_item(id!!)
+                val pos = viewHolder.adapterPosition
+                var id = item_list.get(pos).id
+                val db = DBHelper(context)
+                var res = db.del_item(id!!)
                 item_list.removeAt(pos)
-                notify_list.adapter=NotificationAdpter(item_list, requireActivity())
-                if (res==1){
-                    Toast.makeText(context,"Deleted",Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
+                notify_list.adapter = NotificationAdpter(item_list, requireActivity())
+                if (res == 1) {
+                    Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-        val itemTouchHelper= ItemTouchHelper(itemTouchHelperc)
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperc)
         itemTouchHelper.attachToRecyclerView(notify_list)
 
         del_all.setOnClickListener {
-            var res=dbHelper.del_all()
-            item_list.clear()
-            notify_list.adapter=NotificationAdpter(item_list,requireActivity())
-            Toast.makeText(context,"All notification history deleted",Toast.LENGTH_SHORT).show()
+
+            builder.setTitle("Are you sure..?")
+            builder.setMessage("All the history will be deleted")
+            builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+                dbHelper.del_all()
+                item_list.clear()
+                notify_list.adapter = NotificationAdpter(item_list, requireActivity())
+                Toast.makeText(context, "All notification history deleted", Toast.LENGTH_SHORT)
+                    .show()
+            })
+            builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
+                dialog.dismiss()
+            })
+            builder.show()
         }
 
         return rootView
