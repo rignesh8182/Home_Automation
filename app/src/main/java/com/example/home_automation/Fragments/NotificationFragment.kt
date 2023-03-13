@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.database.Cursor
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -67,15 +68,17 @@ class NotificationFragment() : Fragment() {
 //        })
         var data: Cursor = dbHelper.getAll()
         data.moveToLast()
-        item_list.add(
-            Notification_model(
-                data.getInt(0),
-                data.getString(1),
-                data.getString(3),
-                data.getInt(2) == 1,
-                data.getLong(4)
+        if (data.count > 0) {
+            item_list.add(
+                Notification_model(
+                    data.getInt(0),
+                    data.getString(1),
+                    data.getString(3),
+                    data.getInt(2) == 1,
+                    data.getLong(4)
+                )
             )
-        )
+        }
         while (data.moveToPrevious()) {
             item_list.add(
                 Notification_model(
@@ -86,6 +89,7 @@ class NotificationFragment() : Fragment() {
                     data.getLong(4)
                 )
             )
+            del_all.visibility=View.VISIBLE
         }
         notify_list.layoutManager = LinearLayoutManager(activity)
         notify_list.adapter = NotificationAdpter(item_list, requireActivity())

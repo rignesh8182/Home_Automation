@@ -90,7 +90,6 @@ class HomeFragment : Fragment() {
                     progress.dismiss()
                 }
             },{})
-
             Volley.newRequestQueue(activity).add(loc_request)
 
         }, { })

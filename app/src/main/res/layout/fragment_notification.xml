@@ -28,6 +28,7 @@
             android:layout_alignParentRight="true"
             android:textColor="#50ffffff"
             android:layout_centerVertical="true"
+            android:visibility="gone"
             android:id="@+id/del_all"/>
     </RelativeLayout>
 

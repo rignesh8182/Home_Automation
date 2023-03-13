@@ -31,6 +31,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
@@ -49,4 +50,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     //Volley API
     implementation 'com.android.volley:volley:1.2.1'
+
+    implementation 'me.relex:circleindicator:2.1.6'
 }
