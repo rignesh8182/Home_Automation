@@ -97,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
                 android:cursorVisible="true"
+                android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textCursorDrawable="@drawable/cursor"
                 android:textSize="15dp" />

@@ -123,8 +123,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/hm_bed"
-            android:clickable="true"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -132,6 +130,8 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:id="@+id/hm_bed"
+                android:clickable="true"
                 android:gravity="center_horizontal">
 
                 <androidx.cardview.widget.CardView
@@ -160,6 +160,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:id="@+id/hm_kit"
                 android:gravity="center_horizontal">
 
                 <androidx.cardview.widget.CardView
@@ -188,6 +189,8 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:id="@+id/hm_kit"
+
                 android:gravity="center_horizontal">
 
                 <androidx.cardview.widget.CardView

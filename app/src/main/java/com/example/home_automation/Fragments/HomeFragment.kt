@@ -46,6 +46,7 @@ class HomeFragment : Fragment() {
             parentFragmentManager.beginTransaction().replace(R.id.frame, BedroomFragment()).commit()
         }
 
+
         val SDK_INT = Build.VERSION.SDK_INT
         if (SDK_INT > 8) {
             val policy = StrictMode.ThreadPolicy.Builder()
