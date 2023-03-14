@@ -54,12 +54,7 @@ class SignupActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, LoginActivity::class.java))
         }
 
-        name.doOnTextChanged { text, start, before, count ->
-            onm.error = null
-        }
-        email.doOnTextChanged { text, start, before, count ->
-            oem.error = null
-        }
+
         pass.doOnTextChanged { text, start, before, count ->
             opass.error = null
         }
