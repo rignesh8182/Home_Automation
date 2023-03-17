@@ -22,7 +22,7 @@ class AddDevice : AppCompatActivity(),OnItemSelectedListener {
     lateinit var plc_spn: Spinner
     lateinit var add_btn: Button
 
-    var dev_title = arrayOf("Select>","Ac", "Light")
+    var dev_title = arrayOf("Select>","fan", "light")
     var dev_img = intArrayOf(0,R.drawable.fan, R.drawable.light)
     var plc_title = arrayOf(
         "Select>",

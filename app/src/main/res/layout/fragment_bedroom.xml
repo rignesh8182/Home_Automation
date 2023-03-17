@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     android:background="@color/primary_bg"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".Fragments.BedroomFragment">
+    tools:context=".Fragments.DeviceControlFragment">
 
     <TextView
         android:id="@+id/dev_con_title"
@@ -18,12 +18,22 @@
         android:textSize="30dp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/empty_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="There is no device in this room"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/items"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
         android:clipToPadding="false"
+        android:layout_below="@+id/dev_con_title"
         android:overScrollMode="never"/>
 
-</LinearLayout>
+</RelativeLayout>

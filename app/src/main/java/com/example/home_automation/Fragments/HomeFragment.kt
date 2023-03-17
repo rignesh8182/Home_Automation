@@ -10,21 +10,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 //import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.home_automation.R
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import org.json.JSONObject
 
 class HomeFragment : Fragment() {
 
     var temp: String = String()
     lateinit var bed:LinearLayout
+    lateinit var kit:LinearLayout
+    lateinit var liv:LinearLayout
+    lateinit var bath:LinearLayout
+    lateinit var bal:LinearLayout
+    lateinit var car:LinearLayout
+    lateinit var study:LinearLayout
+    lateinit var off:LinearLayout
     lateinit var home_temp:TextView
     lateinit var weth_con:TextView
     lateinit var loc:TextView
@@ -38,12 +42,40 @@ class HomeFragment : Fragment() {
         var rootview = inflater.inflate(R.layout.fragment_home, container, false)
 
         bed=rootview.findViewById(R.id.hm_bed)
+        kit=rootview.findViewById(R.id.hm_kit)
+        liv=rootview.findViewById(R.id.hm_liv)
+        bath=rootview.findViewById(R.id.hm_bath)
+        bal=rootview.findViewById(R.id.hm_bal)
+        car=rootview.findViewById(R.id.hm_car)
+        study=rootview.findViewById(R.id.hm_study)
+        off=rootview.findViewById(R.id.hm_off)
         home_temp=rootview.findViewById(R.id.home_tem)
         weth_con=rootview.findViewById(R.id.weth_condi)
         loc=rootview.findViewById(R.id.loc)
 
         bed.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, BedroomFragment()).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Bedroom")).commit()
+        }
+        kit.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Kitchen")).commit()
+        }
+        liv.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Livingroom")).commit()
+        }
+        bath.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Bathroom")).commit()
+        }
+        bal.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Balcony")).commit()
+        }
+        car.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Parking")).commit()
+        }
+        study.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Studyroom")).commit()
+        }
+        off.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Office")).commit()
         }
 
 
