@@ -34,10 +34,10 @@
             android:hint="Enter Name"
             android:textColorHint="#7042C3B4"
             app:boxStrokeColor="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
             app:hintTextColor="@color/log_stroke"
             app:startIconDrawable="@drawable/user"
-            app:errorIconDrawable="@drawable/error"
-            app:errorEnabled="true"
             app:startIconTint="@color/log_stroke">
 
             <EditText
@@ -61,10 +61,10 @@
             android:hint="Enter Email"
             android:textColorHint="#7042C3B4"
             app:boxStrokeColor="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
             app:hintTextColor="@color/log_stroke"
             app:startIconDrawable="@drawable/mail"
-            app:errorIconDrawable="@drawable/error"
-            app:errorEnabled="true"
             app:startIconTint="@color/log_stroke">
 
             <EditText
@@ -88,11 +88,12 @@
             android:hint="Enter Password"
             android:textColorHint="#7042C3B4"
             app:boxStrokeColor="@color/log_stroke"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
             app:hintTextColor="@color/log_stroke"
             app:startIconDrawable="@drawable/lock"
-            app:errorIconDrawable="@drawable/error"
-            app:endIconMode="password_toggle"
-            app:errorEnabled="true"
             app:startIconTint="@color/log_stroke">
 
             <EditText
@@ -101,8 +102,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
                 android:cursorVisible="true"
-                android:textColor="@color/white"
                 android:inputType="textPassword"
+                android:textColor="@color/white"
                 android:textCursorDrawable="@drawable/cursor"
                 android:textSize="15dp" />
 
@@ -117,10 +118,11 @@
             android:hint="Re-type Password"
             android:textColorHint="#7042C3B4"
             app:boxStrokeColor="@color/log_stroke"
-            app:hintTextColor="@color/log_stroke"
-            app:errorIconDrawable="@drawable/error"
-            app:errorEnabled="true"
             app:endIconMode="password_toggle"
+            app:endIconTint="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
+            app:hintTextColor="@color/log_stroke"
             app:startIconDrawable="@drawable/lock"
             app:startIconTint="@color/log_stroke">
 
@@ -130,8 +132,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
                 android:cursorVisible="true"
-                android:textColor="@color/white"
                 android:inputType="textPassword"
+                android:textColor="@color/white"
                 android:textCursorDrawable="@drawable/cursor"
                 android:textSize="15dp" />
 
@@ -146,10 +148,10 @@
             android:hint="Enter mobile no."
             android:textColorHint="#7042C3B4"
             app:boxStrokeColor="@color/log_stroke"
-            app:hintTextColor="@color/log_stroke"
-            app:startIconDrawable="@drawable/phone"
             app:errorEnabled="true"
             app:errorIconDrawable="@drawable/error"
+            app:hintTextColor="@color/log_stroke"
+            app:startIconDrawable="@drawable/phone"
             app:startIconTint="@color/log_stroke">
 
             <EditText

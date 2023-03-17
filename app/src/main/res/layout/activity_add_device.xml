@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="30dp"
+    android:background="@color/primary_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".AddDevice">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Device"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/cus_back"
+        android:layout_marginTop="20dp"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Name"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:padding="0dp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/dev_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Enter name"
+            android:paddingLeft="10dp"
+            android:textColorHint="#50ffffff"
+            android:textCursorDrawable="@drawable/cursor"
+            android:cursorVisible="true"
+            android:textColor="@color/white"
+            android:background="@drawable/cus_edit"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/cus_back"
+        android:layout_marginTop="20dp"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Device"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:padding="0dp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/dev_spn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Enter name"
+            android:paddingLeft="10dp"
+            android:textColorHint="#50ffffff"
+            android:cursorVisible="true"
+            android:textColor="@color/white"
+            android:background="@drawable/cus_edit"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/cus_back"
+        android:layout_marginTop="20dp"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Place"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:padding="0dp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/plc_spn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:textColorHint="#50ffffff"
+            android:cursorVisible="true"
+            android:textColor="@color/white"
+            android:background="@drawable/cus_edit"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:backgroundTint="@color/log_stroke"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="20dp"/>
+
+</LinearLayout>

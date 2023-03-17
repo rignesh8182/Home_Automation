@@ -52,5 +52,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        add_btn.setOnClickListener {
+            startActivity(Intent(applicationContext,AddDevice::class.java))
+        }
     }
 }

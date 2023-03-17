@@ -88,6 +88,7 @@
             app:startIconDrawable="@drawable/lock"
             app:errorIconDrawable="@drawable/error"
             app:endIconMode="password_toggle"
+            app:endIconTint="@color/log_stroke"
             app:errorEnabled="true"
             app:startIconTint="@color/log_stroke">
 
