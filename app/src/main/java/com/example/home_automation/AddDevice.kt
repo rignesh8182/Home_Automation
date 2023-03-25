@@ -64,7 +64,7 @@ class AddDevice : AppCompatActivity(),OnItemSelectedListener {
 
         add_btn.setOnClickListener {
             var dev_pos=dev_spn.selectedItemPosition
-            var plc_pos=dev_spn.selectedItemPosition
+            var plc_pos=plc_spn.selectedItemPosition
 
             if (dev_name.text.isEmpty()){
                 Toast.makeText(applicationContext, "Please enter device name", Toast.LENGTH_SHORT).show()
@@ -75,6 +75,7 @@ class AddDevice : AppCompatActivity(),OnItemSelectedListener {
             }else{
                 val db = Firebase.database
                 val ref = db.getReference("Device_data")
+                Toast.makeText(applicationContext, plc_pos.toString(), Toast.LENGTH_SHORT).show()
                 ref.push().setValue(
                     itemModel(dev_name.text.toString().trim(),dev_title.get(dev_pos),plc_title.get(plc_pos),false)
                 ).addOnCompleteListener {

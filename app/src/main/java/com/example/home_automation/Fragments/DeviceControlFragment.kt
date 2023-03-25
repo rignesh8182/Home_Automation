@@ -64,7 +64,7 @@ class DeviceControlFragment(var place:String) : Fragment() {
                 else{
                     items=rootView.findViewById(R.id.items)
                     items.adapter= item_adpter(item_list,activity)
-                    items.setPadding(40,0,40,0)
+                    items.setPadding(20,0,20,0)
                     items.offscreenPageLimit=3
                     items.getChildAt(0).overScrollMode=RecyclerView.OVER_SCROLL_NEVER
                     val compositePageTransformer = CompositePageTransformer()

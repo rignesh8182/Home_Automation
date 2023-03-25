@@ -43,6 +43,7 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
         progressDialog.setMessage("Fetching Images")
         progressDialog.setCancelable(false)
         progressDialog.show()
+
         storeimg.getFile(tempfile).addOnSuccessListener(OnSuccessListener {
             var bitmap = BitmapFactory.decodeFile(tempfile.absolutePath)
             holder.item_img.setImageBitmap(bitmap)
@@ -80,6 +81,7 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
                                 }else{
                                     Toast.makeText(context, "Error in insertion", Toast.LENGTH_SHORT).show()
                                 }
+
                             }
                             break
                         }

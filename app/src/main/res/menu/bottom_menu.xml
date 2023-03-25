@@ -2,33 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Home"
+        android:id="@+id/menu_home"
         android:icon="@drawable/home"
         android:iconTint="#1E2D4C"
-        android:id="@+id/menu_home"/>
+        android:title="Home" />
 
     <item
-        android:title="Statistic"
+        android:id="@+id/state"
         android:icon="@drawable/report"
         android:iconTint="#1E2D4C"
-        android:id="@+id/state"/>
+        android:title="Statistic" />
 
     <item
-        android:title=""
+        android:id="@+id/placeholder"
         android:enabled="false"
-        android:id="@+id/placeholder"/>
+        android:title="" />
 
     <item
-        android:title="Notification"
+        android:id="@+id/notification"
         android:icon="@drawable/notification"
         android:iconTint="#1E2D4C"
-        android:id="@+id/notification"/>
+        android:title="Notification" />
 
     <item
-        android:title="Setting"
+        android:id="@+id/setting"
         android:icon="@drawable/setting"
         android:iconTint="#1E2D4C"
-        android:id="@+id/setting"/>
-
-
+        android:title="Setting" />
 </menu>

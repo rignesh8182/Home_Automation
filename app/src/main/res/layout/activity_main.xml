@@ -49,37 +49,37 @@
     </RelativeLayout>
 
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bt_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:backgroundTint="#F2F2F2"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="15dp"
-        app:fabCradleVerticalOffset="5dp">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_menu"
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bt_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@android:color/transparent"
-            app:itemIconTint="#1E2D4C"
-            app:menu="@menu/bottom_menu" />
+            android:layout_gravity="bottom"
+            android:backgroundTint="#F2F2F2"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="15dp"
+            app:fabCradleVerticalOffset="5dp">
 
-    </com.google.android.material.bottomappbar.BottomAppBar>
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:itemIconTint="#1E2D4C"
+                app:menu="@menu/bottom_menu" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:backgroundTint="@color/old_primary_bg"
-        android:src="@drawable/baseline_add_24"
-        android:tint="@color/primary_bg"
-        app:borderWidth="0dp"
-        app:layout_anchor="@id/bt_bar"
-        app:tint="@color/primary_bg" />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:backgroundTint="@color/old_primary_bg"
+            android:src="@drawable/baseline_add_24"
+            android:tint="@color/primary_bg"
+            app:borderWidth="0dp"
+            app:layout_anchor="@id/bt_bar"
+            app:tint="@color/primary_bg" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

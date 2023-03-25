@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary_bg"
     android:orientation="vertical"
-    android:padding="20dp"
+
     tools:context=".Fragments.DeviceControlFragment">
 
     <TextView
@@ -16,6 +16,7 @@
         android:text="Bedroom"
         android:textColor="@color/white"
         android:textSize="30dp"
+        android:layout_margin="10dp"
         android:textStyle="bold" />
 
     <TextView
