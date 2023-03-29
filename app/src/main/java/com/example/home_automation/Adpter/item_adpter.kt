@@ -1,6 +1,7 @@
 package com.example.home_automation.Adpter
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,9 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.home_automation.DBHelper
+import com.example.home_automation.LoginActivity
+import com.example.home_automation.Models.Notification_model
+import com.example.home_automation.Models.User_model
 import com.example.home_automation.Models.itemModel
 import com.example.home_automation.R
 import com.google.android.gms.tasks.OnCompleteListener
@@ -20,6 +24,8 @@ import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
@@ -62,52 +68,63 @@ class item_adpter(var item_list: ArrayList<itemModel>, var context: FragmentActi
         holder.item_switch.setOnClickListener {
             if (item_list.get(position).state == true) {
                 var db: FirebaseDatabase = FirebaseDatabase.getInstance()
-                db.getReference("Hello").get().addOnCompleteListener(OnCompleteListener {
+                db.getReference("Device_data").get().addOnCompleteListener(OnCompleteListener {
                     var snapshot: DataSnapshot = it.getResult()
                     var key: String = ""
                     for (ss: DataSnapshot in snapshot.children) {
                         val contactModel = ss.getValue(itemModel::class.java)
-                        if (contactModel!!.name == item_list.get(position).name) {
+                        if (contactModel!!.time == item_list.get(position).time) {
                             key = ss.key!!
                             if (!key.isEmpty()) {
-                                db.getReference("Hello").child(key).child("state").setValue(false)
-                                db.getReference("Hello").child(key).child("time")
-                                    .setValue(System.currentTimeMillis())
+                                db.getReference("Device_data").child(key).child("state").setValue(false)
+//                                db.getReference("Device_data").child(key).child("time").setValue(System.currentTimeMillis())
                                 item_list.get(position).state = false
-                                item_list.set(position, item_list.get(position));
-                                var res:Boolean=dbhelper.insert_data(item_list.get(position).name,false,item_list.get(position).img,System.currentTimeMillis())
-                                if (res){
-                                    Toast.makeText(context, "Data inserted", Toast.LENGTH_SHORT).show()
-                                }else{
-                                    Toast.makeText(context, "Error in insertion", Toast.LENGTH_SHORT).show()
+                                item_list.set(position, item_list.get(position))
+                                var progressDialog= ProgressDialog(context)
+                                progressDialog.setMessage("Starting....")
+                                progressDialog.setCancelable(false)
+                                progressDialog.show()
+                                val db = Firebase.database
+                                val ref = db.getReference("Notification_data")
+                                ref.push().setValue(
+                                    Notification_model(item_list.get(position).name,item_list.get(position).img,false,System.currentTimeMillis())
+                                ).addOnCompleteListener{
+                                    if (progressDialog.isShowing){
+                                        progressDialog.dismiss()
+                                    }
                                 }
-
                             }
                             break
                         }
                     }
                 })
-
             } else {
                 var db: FirebaseDatabase = FirebaseDatabase.getInstance()
-                db.getReference("Hello").get().addOnCompleteListener(OnCompleteListener {
+                db.getReference("Device_data").get().addOnCompleteListener(OnCompleteListener {
                     var snapshot: DataSnapshot = it.getResult()
                     var key: String = ""
                     for (ss: DataSnapshot in snapshot.children) {
                         val contactModel = ss.getValue(itemModel::class.java)
-                        if (contactModel!!.name == item_list.get(position).name) {
+                        if (contactModel!!.time == item_list.get(position).time) {
                             key = ss.key!!
                             if (!key.isEmpty()) {
-                                db.getReference("Hello").child(key).child("state").setValue(true)
-                                db.getReference("Hello").child(key).child("time")
-                                    .setValue(System.currentTimeMillis())
+                                db.getReference("Device_data").child(key).child("state").setValue(true)
+//                                db.getReference("Device_data").child(key).child("time")
+//                                    .setValue(System.currentTimeMillis())
                                 item_list.get(position).state = true
                                 item_list.set(position, item_list.get(position));
-                                var res:Boolean=dbhelper.insert_data(item_list.get(position).name,true,item_list.get(position).img,System.currentTimeMillis())
-                                if (res){
-                                    Toast.makeText(context, "Data inserted", Toast.LENGTH_SHORT).show()
-                                }else{
-                                    Toast.makeText(context, "Error in insertion", Toast.LENGTH_SHORT).show()
+                                var progressDialog= ProgressDialog(context)
+                                progressDialog.setMessage("Starting....")
+                                progressDialog.setCancelable(false)
+                                progressDialog.show()
+                                val db = Firebase.database
+                                val ref = db.getReference("Notification_data")
+                                ref.push().setValue(
+                                    Notification_model(item_list.get(position).name,item_list.get(position).img,true,System.currentTimeMillis())
+                                ).addOnCompleteListener{
+                                    if (progressDialog.isShowing){
+                                        progressDialog.dismiss()
+                                    }
                                 }
                             }
                             break

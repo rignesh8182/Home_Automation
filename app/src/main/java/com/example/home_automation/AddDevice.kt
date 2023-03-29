@@ -77,10 +77,11 @@ class AddDevice : AppCompatActivity(),OnItemSelectedListener {
                 val ref = db.getReference("Device_data")
                 Toast.makeText(applicationContext, plc_pos.toString(), Toast.LENGTH_SHORT).show()
                 ref.push().setValue(
-                    itemModel(dev_name.text.toString().trim(),dev_title.get(dev_pos),plc_title.get(plc_pos),false)
+                    itemModel(System.currentTimeMillis(),dev_name.text.toString().trim(),dev_title.get(dev_pos),plc_title.get(plc_pos),false)
                 ).addOnCompleteListener {
                     Toast.makeText(this, "Device added successfull", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(applicationContext,MainActivity::class.java))
+                    finish()
                 }
             }
         }

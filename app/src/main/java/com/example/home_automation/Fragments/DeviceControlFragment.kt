@@ -88,4 +88,6 @@ class DeviceControlFragment(var place:String) : Fragment() {
 
         return rootView
     }
+
+
 }
