@@ -89,12 +89,6 @@ class NotificationFragment() : Fragment() {
                 val pos = viewHolder.adapterPosition
                 var time = item_list.get(pos).time
 
-
-
-
-
-
-
                 var progressDialog= ProgressDialog(context)
                 progressDialog.setMessage("Deleting...")
                 progressDialog.setCancelable(false)

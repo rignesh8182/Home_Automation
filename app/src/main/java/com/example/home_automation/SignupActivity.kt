@@ -102,6 +102,7 @@ class SignupActivity : AppCompatActivity() {
                 ).addOnCompleteListener {
                     Toast.makeText(this, "Registration successfull", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(applicationContext,LoginActivity::class.java))
+                    finish()
                 }
             }
         }
