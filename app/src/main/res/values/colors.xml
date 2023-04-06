@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#1E2D4C</color>
-    <color name="primary_bg">#0A0D1E</color>
+    <color name="Dark_blue">#0A0D1E</color>
     <color name="old_primary_bg">#f2f2f2</color>
     <color name="card_bg">#1A1D2E</color>
     <color name="log_stroke">#42C3B4</color>
