@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Home_Automation"
         tools:targetApi="31">
         <activity
+            android:name=".Edit_profile"
+            android:exported="false" />
+        <activity
             android:name=".Profile_Activity"
             android:exported="false" />
         <activity

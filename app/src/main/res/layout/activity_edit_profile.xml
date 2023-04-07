@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_bg"
+    tools:context=".SignupActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textSize="31dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/onm"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Enter Name"
+            android:textColorHint="#7042C3B4"
+            app:boxStrokeColor="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
+            app:hintTextColor="@color/log_stroke"
+            app:startIconDrawable="@drawable/user"
+            app:startIconTint="@color/log_stroke">
+
+            <EditText
+                android:id="@+id/edt_nm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:cursorVisible="true"
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="15dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/oem"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email"
+            android:textColorHint="#7042C3B4"
+            app:boxStrokeColor="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
+            app:hintTextColor="@color/log_stroke"
+            app:startIconDrawable="@drawable/mail"
+            app:startIconTint="@color/log_stroke">
+
+            <EditText
+                android:id="@+id/edt_em"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:cursorVisible="true"
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="15dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/opass"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            android:textColorHint="#7042C3B4"
+            app:boxStrokeColor="@color/log_stroke"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
+            app:hintTextColor="@color/log_stroke"
+            app:startIconDrawable="@drawable/lock"
+            app:startIconTint="@color/log_stroke">
+
+            <EditText
+                android:id="@+id/edt_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:cursorVisible="true"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="15dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ocpass"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re-type Password"
+            android:textColorHint="#7042C3B4"
+            app:boxStrokeColor="@color/log_stroke"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
+            app:hintTextColor="@color/log_stroke"
+            app:startIconDrawable="@drawable/lock"
+            app:startIconTint="@color/log_stroke">
+
+            <EditText
+                android:id="@+id/edt_cpass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:cursorVisible="true"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="15dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/omob"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter mobile no."
+            android:textColorHint="#7042C3B4"
+            app:boxStrokeColor="@color/log_stroke"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
+            app:hintTextColor="@color/log_stroke"
+            app:startIconDrawable="@drawable/phone"
+            app:startIconTint="@color/log_stroke">
+
+            <EditText
+                android:id="@+id/edt_mob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:cursorVisible="true"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/white"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="15dp" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#42C3B4"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:textColor="#0A141D"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

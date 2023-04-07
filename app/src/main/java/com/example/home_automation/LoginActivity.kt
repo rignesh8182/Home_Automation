@@ -91,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
                                 temp_res=false
                             }
                         }
-                        if (!temp_res){
+                        if (temp_res){
                             Toast.makeText(applicationContext, "Email id or password is wrong", Toast.LENGTH_SHORT).show()
                         }
                     }
