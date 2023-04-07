@@ -72,75 +72,142 @@ class NotificationFragment() : Fragment() {
                 if (progressDialog.isShowing){
                     progressDialog.dismiss()
                 }
+                val db_ref=FirebaseDatabase.getInstance()
+                val itemTouchHelperc = object : ItemTouchHelper.SimpleCallback(0, LEFT or RIGHT) {
+                    override fun onMove(
+                        recyclerView: RecyclerView,
+                        viewHolder: RecyclerView.ViewHolder,
+                        target: RecyclerView.ViewHolder
+                    ) = true
+
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        val pos = viewHolder.adapterPosition
+                        var time = item_list.get(pos).time
+
+                        var progressDialog= ProgressDialog(context)
+                        progressDialog.setMessage("Deleting...")
+                        progressDialog.setCancelable(false)
+                        progressDialog.show()
+                        db_ref.getReference("Notification_data").get().addOnCompleteListener {
+                            var snapshot:DataSnapshot=it.getResult()
+                            var key:String=""
+                            for (ss in snapshot.children){
+                                var temp_list=ss.getValue(Notification_model::class.java)
+                                if (temp_list!!.time!!.equals(time)){
+                                    key= ss.key.toString()
+                                    break
+                                }
+                            }
+
+                            if (!key.isEmpty()){
+                                db_ref.getReference("Notification_data").child(key).removeValue().addOnCompleteListener {
+                                    if (progressDialog.isShowing){
+                                        progressDialog.dismiss()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                val itemTouchHelper = ItemTouchHelper(itemTouchHelperc)
+                itemTouchHelper.attachToRecyclerView(notify_list)
+
+                val builder = AlertDialog.Builder(activity)
+                del_all.setOnClickListener {
+                    builder.setTitle("Are you sure..?")
+                    builder.setMessage("All the history will be deleted")
+                    builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+                        var progressDialog= ProgressDialog(context)
+                        progressDialog.setMessage("Deleting...")
+                        progressDialog.setCancelable(false)
+                        progressDialog.show()
+                        db_ref.getReference("Notification_data").removeValue().addOnCompleteListener {
+                            if (progressDialog.isShowing){
+                                progressDialog.dismiss()
+                            }
+                        }
+                        item_list.clear()
+                        notify_list.adapter = NotificationAdpter(item_list, requireActivity())
+                        Toast.makeText(context, "All notification history deleted", Toast.LENGTH_SHORT)
+                            .show()
+                    })
+                    builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
+                        dialog.dismiss()
+                    })
+                    builder.show()
+                    del_all.visibility=View.INVISIBLE
+                }
                 del_all.visibility = View.VISIBLE
             }
 
             override fun onCancelled(error: DatabaseError) {}
         })
-        val db_ref=FirebaseDatabase.getInstance()
-        val itemTouchHelperc = object : ItemTouchHelper.SimpleCallback(0, LEFT or RIGHT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ) = true
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val pos = viewHolder.adapterPosition
-                var time = item_list.get(pos).time
 
-                var progressDialog= ProgressDialog(context)
-                progressDialog.setMessage("Deleting...")
-                progressDialog.setCancelable(false)
-                progressDialog.show()
-                db_ref.getReference("Notification_data").get().addOnCompleteListener {
-                    var snapshot:DataSnapshot=it.getResult()
-                    var key:String=""
-                    for (ss in snapshot.children){
-                        var temp_list=ss.getValue(Notification_model::class.java)
-                        if (temp_list!!.time!!.equals(time)){
-                            key= ss.key.toString()
-                            break
-                        }
-                    }
+//        val db_ref=FirebaseDatabase.getInstance()
+//        val itemTouchHelperc = object : ItemTouchHelper.SimpleCallback(0, LEFT or RIGHT) {
+//            override fun onMove(
+//                recyclerView: RecyclerView,
+//                viewHolder: RecyclerView.ViewHolder,
+//                target: RecyclerView.ViewHolder
+//            ) = true
+//
+//            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+//                val pos = viewHolder.adapterPosition
+//                var time = item_list.get(pos).time
+//
+//                var progressDialog= ProgressDialog(context)
+//                progressDialog.setMessage("Deleting...")
+//                progressDialog.setCancelable(false)
+//                progressDialog.show()
+//                db_ref.getReference("Notification_data").get().addOnCompleteListener {
+//                    var snapshot:DataSnapshot=it.getResult()
+//                    var key:String=""
+//                    for (ss in snapshot.children){
+//                        var temp_list=ss.getValue(Notification_model::class.java)
+//                        if (temp_list!!.time!!.equals(time)){
+//                            key= ss.key.toString()
+//                            break
+//                        }
+//                    }
+//
+//                    if (!key.isEmpty()){
+//                        db_ref.getReference("Notification_data").child(key).removeValue().addOnCompleteListener {
+//                            if (progressDialog.isShowing){
+//                                progressDialog.dismiss()
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        val itemTouchHelper = ItemTouchHelper(itemTouchHelperc)
+//        itemTouchHelper.attachToRecyclerView(notify_list)
 
-                    if (!key.isEmpty()){
-                        db_ref.getReference("Notification_data").child(key).removeValue().addOnCompleteListener {
-                            if (progressDialog.isShowing){
-                                progressDialog.dismiss()
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        val itemTouchHelper = ItemTouchHelper(itemTouchHelperc)
-        itemTouchHelper.attachToRecyclerView(notify_list)
-
-        val builder = AlertDialog.Builder(activity)
-        del_all.setOnClickListener {
-            builder.setTitle("Are you sure..?")
-            builder.setMessage("All the history will be deleted")
-            builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
-                var progressDialog= ProgressDialog(context)
-                progressDialog.setMessage("Deleting...")
-                progressDialog.setCancelable(false)
-                progressDialog.show()
-                db_ref.getReference("Notification_data").removeValue().addOnCompleteListener {
-                    if (progressDialog.isShowing){
-                        progressDialog.dismiss()
-                    }
-                }
-                item_list.clear()
-                notify_list.adapter = NotificationAdpter(item_list, requireActivity())
-                Toast.makeText(context, "All notification history deleted", Toast.LENGTH_SHORT)
-                    .show()
-            })
-            builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
-                dialog.dismiss()
-            })
-            builder.show()
-        }
+//        val builder = AlertDialog.Builder(activity)
+//        del_all.setOnClickListener {
+//            builder.setTitle("Are you sure..?")
+//            builder.setMessage("All the history will be deleted")
+//            builder.setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+//                var progressDialog= ProgressDialog(context)
+//                progressDialog.setMessage("Deleting...")
+//                progressDialog.setCancelable(false)
+//                progressDialog.show()
+//                db_ref.getReference("Notification_data").removeValue().addOnCompleteListener {
+//                    if (progressDialog.isShowing){
+//                        progressDialog.dismiss()
+//                    }
+//                }
+//                item_list.clear()
+//                notify_list.adapter = NotificationAdpter(item_list, requireActivity())
+//                Toast.makeText(context, "All notification history deleted", Toast.LENGTH_SHORT)
+//                    .show()
+//            })
+//            builder.setNegativeButton("No", DialogInterface.OnClickListener { dialog, which ->
+//                dialog.dismiss()
+//            })
+//            builder.show()
+//        }
 
         return rootView
     }

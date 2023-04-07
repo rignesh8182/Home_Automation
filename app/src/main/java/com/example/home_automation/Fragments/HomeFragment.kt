@@ -11,10 +11,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 //import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.home_automation.Models.User_model
 import com.example.home_automation.R
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import okhttp3.OkHttpClient
 import org.json.JSONObject
 
@@ -32,6 +39,8 @@ class HomeFragment : Fragment() {
     lateinit var home_temp:TextView
     lateinit var weth_con:TextView
     lateinit var loc:TextView
+    lateinit var user_mail:String
+    lateinit var greeting:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +61,30 @@ class HomeFragment : Fragment() {
         home_temp=rootview.findViewById(R.id.home_tem)
         weth_con=rootview.findViewById(R.id.weth_condi)
         loc=rootview.findViewById(R.id.loc)
+        greeting=rootview.findViewById(R.id.greetings)
+
+        var sp = activity?.getSharedPreferences("User_data", AppCompatActivity.MODE_PRIVATE)
+        user_mail= sp!!.getString("user_mail",null).toString()
+
+        val db=FirebaseDatabase.getInstance().getReference("Login_data")
+
+        db.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ss in snapshot.children){
+                    var temp_list=ss.getValue(User_model::class.java)
+                    if (temp_list!!.email.equals(user_mail)){
+                        greeting.text="Hello,${temp_list.name}"
+                        break
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
 
         bed.setOnClickListener {
             addFragment("Bedroom")
