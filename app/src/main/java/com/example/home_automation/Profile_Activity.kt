@@ -31,5 +31,9 @@ class Profile_Activity : AppCompatActivity() {
             startActivity(Intent(applicationContext,LoginActivity::class.java))
             finish()
         }
+
+        back_btn.setOnClickListener {
+            super.onBackPressed()
+        }
     }
 }
