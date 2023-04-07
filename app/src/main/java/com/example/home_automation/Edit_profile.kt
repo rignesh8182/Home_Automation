@@ -92,6 +92,7 @@ class Edit_profile : AppCompatActivity() {
 
         cng_pass.setOnClickListener {
             startActivity(Intent(applicationContext,Change_pwd::class.java))
+            finish()
         }
     }
 }
