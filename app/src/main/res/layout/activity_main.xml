@@ -21,14 +21,6 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/side_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/nav_menu" />
-
-            <ImageView
                 android:id="@+id/pro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

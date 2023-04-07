@@ -54,28 +54,28 @@ class HomeFragment : Fragment() {
         loc=rootview.findViewById(R.id.loc)
 
         bed.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Bedroom")).commit()
+            addFragment("Bedroom")
         }
         kit.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Kitchen")).commit()
+            addFragment("Kitchen")
         }
         liv.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Livingroom")).commit()
+            addFragment("Livingroom")
         }
         bath.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Bathroom")).commit()
+            addFragment("Bathroom")
         }
         bal.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Balcony")).commit()
+            addFragment("Balcony")
         }
         car.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Parking")).commit()
+            addFragment("Parking")
         }
         study.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Studyroom")).commit()
+            addFragment("Studyroom")
         }
         off.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment("Office")).commit()
+            addFragment("Office")
         }
 
 
@@ -127,9 +127,10 @@ class HomeFragment : Fragment() {
 
         }, { })
         Volley.newRequestQueue(activity).add(request1)
-
-
-
         return rootview
+    }
+
+    fun addFragment(tag:String){
+        parentFragmentManager.beginTransaction().replace(R.id.frame, DeviceControlFragment(tag)).addToBackStack(null).commit()
     }
 }

@@ -8,15 +8,16 @@
         android:title="Home" />
 
     <item
-        android:id="@+id/state"
-        android:icon="@drawable/report"
-        android:iconTint="#1E2D4C"
-        android:title="Statistic" />
-
-    <item
         android:id="@+id/placeholder"
         android:enabled="false"
         android:title="" />
+
+    <item
+        android:id="@+id/placeholder1"
+        android:enabled="false"
+        android:title="" />
+
+
 
     <item
         android:id="@+id/notification"
@@ -24,9 +25,4 @@
         android:iconTint="#1E2D4C"
         android:title="Notification" />
 
-    <item
-        android:id="@+id/setting"
-        android:icon="@drawable/setting"
-        android:iconTint="#1E2D4C"
-        android:title="Setting" />
 </menu>
