@@ -20,6 +20,7 @@ class Profile_Activity : AppCompatActivity() {
     lateinit var back_btn:ImageView
     lateinit var name:TextView
     lateinit var number:TextView
+    lateinit var edt_btn:TextView
     lateinit var user_mail:String
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +31,7 @@ class Profile_Activity : AppCompatActivity() {
         back_btn=findViewById(R.id.back_btn)
         name=findViewById(R.id.user_name)
         number=findViewById(R.id.user_number)
+        edt_btn=findViewById(R.id.btn_edit_profile)
 
         var sp = getSharedPreferences("User_data", AppCompatActivity.MODE_PRIVATE)
         user_mail= sp!!.getString("user_mail",null).toString()
@@ -67,6 +69,10 @@ class Profile_Activity : AppCompatActivity() {
 
         back_btn.setOnClickListener {
             super.onBackPressed()
+        }
+
+        edt_btn.setOnClickListener {
+            startActivity(Intent(applicationContext,Edit_profile::class.java))
         }
     }
 }
