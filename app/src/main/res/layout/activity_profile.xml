@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@drawable/bg_profile"
+    android:background="@color/card_bg"
     tools:context=".Profile_Activity">
 
     <de.hdodenhof.circleimageview.CircleImageView
